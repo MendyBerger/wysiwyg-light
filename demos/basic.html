@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.2.0/webcomponents-sd-ce.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Libre+Barcode+39|Noto+Sans|Roboto" rel="stylesheet">
+    <script src="../src/wysiwyg-light.js"></script>
+    <title>Document</title>
+    <style>
+        body wysiwyg-light {
+            box-shadow: 0 0 2px #000;
+            margin: 10px 20px 20px 20px;
+            min-height: 200px;
+        }
+        #outputHtml, #outputView {
+            box-shadow: 0 0 2px #aaa;
+            margin: 20px;
+        }
+
+        .dialog {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background: rgba(238, 238, 238, 0.69);
+            height: 100vh;
+            width: 100vw;
+            justify-content: center;
+            padding-top: 100px;
+            align-items: flex-start;
+        }
+        .dialog.show {
+            display: flex;
+        }
+        .dialog form {
+            box-shadow: 0 0 29px #aaa;
+            background: #fff;
+            padding: 20px;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="getInput('backColor', 'Background Color')">backColor</button>
+    <wysiwyg-light-tool tool="bold"><button>bold</button></wysiwyg-light-tool>
+    <!-- <wysiwyg-light-tool tool="ClearAuthenticationCache"><button>ClearAuthenticationCache</button></wysiwyg-light-tool>take care -->
+    <wysiwyg-light-tool tool="contentReadOnly"><button>contentReadOnly</button></wysiwyg-light-tool>
+    <wysiwyg-light-tool tool="copy"><button>copy</button></wysiwyg-light-tool>
+    <button onclick="getInput('createLink', 'URi', 'url')">createLink</button>
+    <wysiwyg-light-tool tool="cut"><button>cut</button></wysiwyg-light-tool>
+    <wysiwyg-light-tool tool="decreaseFontSize"><button>decreaseFontSize</button></wysiwyg-light-tool>
+    <wysiwyg-light-tool tool="defaultParagraphSeparator"><button>defaultParagraphSeparator</button></wysiwyg-light-tool><!-- take care - problam -->
+    <button onclick="getInput('defaultParagraphSeparator', 'HTML Block Level Tag')">defaultParagraphSeparator</button>
+    <wysiwyg-light-tool tool="delete"><button>delete</button></wysiwyg-light-tool>
+    <button onclick="editer.use('enableInlineTableEditing', false)">enableInlineTableEditing</button>
+    <button onclick="editer.use('enableObjectResizing', false)">enableObjectResizing</button>
+    <button onclick="getInput('fontName', 'Font Name')">fontName</button>
+    <button onclick="getInput('fontSize', 'Text Size (px)')">fontSize</button>
+    <button onclick="getInput('foreColor', 'Text Color')">foreColor</button>
+    <wysiwyg-light-tool tool="formatBlock"><button>formatBlock</button></wysiwyg-light-tool>
+    <wysiwyg-light-tool tool="forwardDelete"><button>forwardDelete</button></wysiwyg-light-tool>
+    <button onclick="getInput('heading', 'Heading')">heading</button>
+    <button onclick="getInput('hiliteColor', 'Text Color')">hiliteColor</button>
+    <wysiwyg-light-tool tool="increaseFontSize"><button>increaseFontSize</button></wysiwyg-light-tool>
+    <wysiwyg-light-tool tool="indent"><button>indent</button></wysiwyg-light-tool>
+    <wysiwyg-light-tool tool="insertBrOnReturn" value="true"><button>insertBrOnReturn</button></wysiwyg-light-tool>
+    <wysiwyg-light-tool tool="insertHorizontalRule"><button>insertHorizontalRule</button></wysiwyg-light-tool>
+    <button onclick="getInput('insertHTML', 'HTML')">insertHTML</button>
+    <button onclick="getInput('insertImage', 'Image URi', 'url')">insertImage</button>
+    <wysiwyg-light-tool tool="insertOrderedList"><button>insertOrderedList</button></wysiwyg-light-tool>
+    <wysiwyg-light-tool tool="insertUnorderedList"><button>insertUnorderedList</button></wysiwyg-light-tool>
+    <wysiwyg-light-tool tool="insertParagraph"><button>insertParagraph</button></wysiwyg-light-tool>
+    <button onclick="getInput('insertText', 'Text')">insertText</button>
+    <wysiwyg-light-tool tool="italic"><button>italic</button></wysiwyg-light-tool>
+    <wysiwyg-light-tool tool="justifyCenter"><button>justifyCenter</button></wysiwyg-light-tool>
+    <wysiwyg-light-tool tool="justifyFull"><button>justifyFull</button></wysiwyg-light-tool>
+    <wysiwyg-light-tool tool="justifyLeft"><button>justifyLeft</button></wysiwyg-light-tool>
+    <wysiwyg-light-tool tool="justifyRight"><button>justifyRight</button></wysiwyg-light-tool>
+    <wysiwyg-light-tool tool="outdent"><button>outdent</button></wysiwyg-light-tool>
+    <!-- <wysiwyg-light-tool tool="paste"><button>paste</button></wysiwyg-light-tool> -->
+    <wysiwyg-light-tool tool="redo"><button>redo</button></wysiwyg-light-tool>
+    <wysiwyg-light-tool tool="removeFormat"><button>removeFormat</button></wysiwyg-light-tool>
+    <wysiwyg-light-tool tool="selectAll"><button>selectAll</button></wysiwyg-light-tool>
+    <wysiwyg-light-tool tool="strikeThrough"><button>strikeThrough</button></wysiwyg-light-tool>
+    <wysiwyg-light-tool tool="subscript"><button>subscript</button></wysiwyg-light-tool>
+    <wysiwyg-light-tool tool="superscript"><button>superscript</button></wysiwyg-light-tool>
+    <wysiwyg-light-tool tool="underline"><button>underline</button></wysiwyg-light-tool>
+    <wysiwyg-light-tool tool="undo"><button>undo</button></wysiwyg-light-tool>
+    <wysiwyg-light-tool tool="unlink"><button>unlink</button></wysiwyg-light-tool>
+    <wysiwyg-light></wysiwyg-light>
+    <div id="outputView" style="min-height: 20px;"></div>
+    <div id="outputHtml" style="min-height: 20px;"></div>
+
+    <div class="dialog">
+        <form>
+            <h2></h2>
+            <input type="text">
+            <button type="submit">submit</button>
+        </form>
+    </div>
+    <script>
+        const editer =  document.querySelector("wysiwyg-light");
+        let outputView = document.getElementById("outputView");
+        let outputHtml = document.getElementById("outputHtml");
+        editer.addEventListener("input", () => {
+            outputView.innerHTML = editer.value;
+            outputHtml.innerText = editer.value;
+        });
+        setTimeout(() => {
+            outputView.innerHTML = editer.value;
+            outputHtml.innerText = editer.value;
+        });
+
+        //document.queryCommandSupported(cmd) checks if support
+        //document.queryCommandEnabled(cmd) checks if enabled now
+        //document.queryCommandState(cmd) checks if toggle cmd is on
+            //document.queryCommandIndeterm(cmd) check if queryCommandState can check 
+        //document.queryCommandValue(cmd) checks value of cmd in selection
+
+        let dialog = document.querySelector(".dialog");
+        let dialogForm = document.querySelector(".dialog form");
+        let dialogHeader = document.querySelector(".dialog h2");
+        let dialogInput = document.querySelector(".dialog input");
+        let __action;
+        dialogForm.addEventListener("submit", e => {
+            e.preventDefault();
+                dialog.classList.remove("show");
+                editer.use(__action, dialogInput.value);
+                console.log(__action, dialogInput.value)
+                __action = undefined;
+        });
+        function getInput(action, headerText, inputType){
+            dialogHeader.textContent = headerText;
+            dialogInput.type = inputType || "text";
+            dialogInput.value = "";
+            dialogInput.placeholder = headerText;
+            __action = action;
+            dialog.classList.add("show");
+            dialogInput.focus();
+        }
+    </script>
+</body>
+</html>
