@@ -61,8 +61,8 @@ This is great when you know ahead of time what the value will be.
 
 2. Use the ```.use``` method of the ```wysiwyg-light``` element, Like this:
 ```js
-  let editer = document.querySelector("wysiwyg-light");
-  editer.use('foreColor', 'red');
+  let editor = document.querySelector("wysiwyg-light");
+  editor.use('foreColor', 'red');
 ```
 This is great when you don't know ahead of time what the value will be.
 
