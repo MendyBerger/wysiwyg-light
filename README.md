@@ -37,6 +37,7 @@ You can use any tool thats supported by ```document.execCommand``` Like:
 * justifyFull
 * justifyLeft
 * justifyRight
+* outdent
 * redo
 * removeFormat
 * selectAll
@@ -45,7 +46,6 @@ You can use any tool thats supported by ```document.execCommand``` Like:
 * superscript
 * underline
 * undo
-* unindent
 * unlink
 
 A complete list can be found on [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document/execCommand)
