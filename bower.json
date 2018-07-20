@@ -1,0 +1,17 @@
+{
+  "name": "wysiwyg-light",
+  "authors": [
+    "Mendy Berger <12537668+MendyBerger@users.noreply.github.com>"
+  ],
+  "description": "Lightweight and flexible WYSIWYG editor API",
+  "main": "wysiwyg-light.js",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
