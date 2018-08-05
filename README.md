@@ -6,6 +6,8 @@ design pattern.
 ## Installation
 ### [NPM](https://www.npmjs.com/package/wysiwyg-light)
 ```npm i wysiwyg-light```
+### Bower
+```bower i wysiwyg-light```
 
 ## Usage
 Using the WYSIWYG is fairly simple, just drop in a ```<wysiwyg-light>``` element, and add a few ```<wysiwyg-light-tool>``` elements and 
